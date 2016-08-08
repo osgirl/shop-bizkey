@@ -2,6 +2,12 @@ package com.mns;
 
 import java.sql.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Bizkey {
 
 	public Bizkey() {
@@ -9,138 +15,140 @@ public class Bizkey {
 
 	// TODO: This needs to be removed after testing
 	public Bizkey(long id, String key, String value, String store, int keyType, String release) {
-		this.id = id;
-		this.key = key;
-		this.value = value;
-		this.store = store;
-		this.KeyType = keyType;
-		this.Release = release;
+		this.bizkeyId = id;
+		this.bizkeyName = key;
+		this.bizkeyValue = value;
+		this.bizKeyStore = store;
+		this.bizKeyType = keyType;
+		this.bizKeyRelease = release;
 	}
 
-	public long getId() {
-		return id;
+	@Id
+	@GeneratedValue(strategy=GenerationType.SEQUENCE)
+	long bizkeyId;
+	public long getBizkeyId() {
+		return bizkeyId;
 	}
 
-	public void setId(long id) {
-		this.id = id;
+	public void setBizkeyId(long bizkeyId) {
+		this.bizkeyId = bizkeyId;
 	}
 
-	public String getKey() {
-		return key;
+	public String getBizkeyName() {
+		return bizkeyName;
 	}
 
-	public void setKey(String key) {
-		this.key = key;
+	public void setBizkeyName(String bizkeyName) {
+		this.bizkeyName = bizkeyName;
 	}
 
-	public String getValue() {
-		return value;
+	public String getBizkeyValue() {
+		return bizkeyValue;
 	}
 
-	public void setValue(String value) {
-		this.value = value;
+	public void setBizkeyValue(String bizkeyValue) {
+		this.bizkeyValue = bizkeyValue;
 	}
 
-	public String getStore() {
-		return store;
+	public String getBizKeyStore() {
+		return bizKeyStore;
 	}
 
-	public void setStore(String store) {
-		this.store = store;
+	public void setBizKeyStore(String bizKeyStore) {
+		this.bizKeyStore = bizKeyStore;
 	}
 
-	public String getGroup() {
-		return group;
+	public String getBizKeyGroup() {
+		return bizKeyGroup;
 	}
 
-	public void setGroup(String group) {
-		this.group = group;
+	public void setBizKeyGroup(String bizKeyGroup) {
+		this.bizKeyGroup = bizKeyGroup;
 	}
 
-	public String getInformation() {
-		return information;
+	public String getBizkeyInformation() {
+		return bizkeyInformation;
 	}
 
-	public void setInformation(String information) {
-		this.information = information;
+	public void setBizkeyInformation(String bizkeyInformation) {
+		this.bizkeyInformation = bizkeyInformation;
 	}
 
-	public int getKeyType() {
-		return KeyType;
+	public int getBizKeyType() {
+		return bizKeyType;
 	}
 
-	public void setKeyType(int keyType) {
-		KeyType = keyType;
+	public void setBizKeyType(int bizKeyType) {
+		this.bizKeyType = bizKeyType;
 	}
 
-	public String getRelease() {
-		return Release;
+	public String getBizKeyRelease() {
+		return bizKeyRelease;
 	}
 
-	public void setRelease(String release) {
-		Release = release;
+	public void setBizKeyRelease(String bizKeyRelease) {
+		this.bizKeyRelease = bizKeyRelease;
 	}
 
-	public String getOwner() {
-		return owner;
+	public String getBizKeyOwner() {
+		return bizKeyOwner;
 	}
 
-	public void setOwner(String owner) {
-		this.owner = owner;
+	public void setBizKeyOwner(String bizKeyOwner) {
+		this.bizKeyOwner = bizKeyOwner;
 	}
 
-	public String getTeam() {
-		return Team;
+	public String getBizKeyTeam() {
+		return bizKeyTeam;
 	}
 
-	public void setTeam(String team) {
-		Team = team;
+	public void setBizKeyTeam(String bizKeyTeam) {
+		this.bizKeyTeam = bizKeyTeam;
 	}
 
-	public Date getCreatedDate() {
-		return createdDate;
+	public Date getBizKeyCreatedDate() {
+		return bizKeyCreatedDate;
 	}
 
-	public void setCreatedDate(Date createdDate) {
-		this.createdDate = createdDate;
+	public void setBizKeyCreatedDate(Date bizKeyCreatedDate) {
+		this.bizKeyCreatedDate = bizKeyCreatedDate;
 	}
 
-	public Date getUpdatedDate() {
-		return updatedDate;
+	public Date getBizKeyUpdatedDate() {
+		return bizKeyUpdatedDate;
 	}
 
-	public void setUpdatedDate(Date updatedDate) {
-		this.updatedDate = updatedDate;
+	public void setBizKeyUpdatedDate(Date bizKeyUpdatedDate) {
+		this.bizKeyUpdatedDate = bizKeyUpdatedDate;
 	}
 
-	public int getSynchedWithRepo() {
-		return synchedWithRepo;
+	public int getBizKeySynchedWithRepo() {
+		return bizKeySynchedWithRepo;
 	}
 
-	public void setSynchedWithRepo(int synchedWithRepo) {
-		this.synchedWithRepo = synchedWithRepo;
+	public void setBizKeySynchedWithRepo(int bizKeySynchedWithRepo) {
+		this.bizKeySynchedWithRepo = bizKeySynchedWithRepo;
 	}
 
-	long id;
-	String key;
-	String value;
+	String bizkeyName;
+	String bizkeyValue;
 	/*
 	 * Describe which type of store we are Adding/Updating/Deleting value mns
 	 * cftouk cftoie
 	 */
-	String store;
-	String group;
-	String information;
+	String bizKeyStore;
+	String bizKeyGroup;
+	String bizkeyInformation;
 	/*
 	 * Describe the type of key 1 updated 0 created
 	 */
-	int KeyType;
-	String Release;
-	String owner;
-	String Team;
+	int bizKeyType;
+	String bizKeyRelease;
+	String bizKeyOwner;
+	String bizKeyTeam;
 
-	Date createdDate;
-	Date updatedDate;
-	int synchedWithRepo;
+	Date bizKeyCreatedDate;
+	Date bizKeyUpdatedDate;
+	int bizKeySynchedWithRepo;
 
 }
