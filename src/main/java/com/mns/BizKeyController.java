@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,14 +29,19 @@ public class BizKeyController {
 
 	@RequestMapping(value = "/updated/{release}", method = RequestMethod.GET)
 	public List<Bizkey> getUpdatedBusinessKeys(@PathVariable String release) {
-		return bizkeyList.stream().filter(x -> x.getBizKeyType() == 1 && release.equals(x.getBizKeyRelease()))
-				.collect(Collectors.toList());
+		
+		/*return bizkeyList.stream().filter(x -> x.getBizKeyType() == 1 && release.equals(x.getBizKeyRelease()))
+				.collect(Collectors.toList());*/
+		Assert.notNull(release, "Release must not be null");
+		return bizKeyRepository.findBybizKeyRelease(release);
 	}
 
 	@RequestMapping(value = "/new/{release}", method = RequestMethod.GET)
 	public List<Bizkey> getNewBusinessKeys(@PathVariable String release) {
-		return bizkeyList.stream().filter(x -> x.getBizKeyType() == 0 && release.equals(x.getBizKeyRelease()))
-				.collect(Collectors.toList());
+		/*return bizkeyList.stream().filter(x -> x.getBizKeyType() == 0 && release.equals(x.getBizKeyRelease()))
+				.collect(Collectors.toList());*/
+		Assert.notNull(release, "Release must not be null");
+		return bizKeyRepository.findBybizKeyType(0);
 	}
 
 	@RequestMapping(value = "/delete/{release}/{id}/{key}/{storeType}", method = RequestMethod.DELETE)
